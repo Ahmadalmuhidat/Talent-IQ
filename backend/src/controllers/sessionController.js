@@ -33,6 +33,11 @@ export async function joinSession(req, res) {
       return res.status(400).json({ message: 'Cannot join a completed session' });
     }
 
+    // Host cannot join as participant
+    if (session.host.toString() === req.user._id.toString()) {
+      return res.status(400).json({ message: 'Host cannot join as participant' });
+    }
+
     // Add user to the session participants
     session.participants.push(req.user._id);
     await session.save();
