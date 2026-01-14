@@ -1,6 +1,6 @@
 import { Inngest } from "inngest";
-import userModel from "../models/userModel";
-import { connectToDatabase } from "./database";
+import User from "../models/userModel.js";
+import { connectToDatabase } from "./database.js";
 
 export const inngest = new Inngest({ id: "talent-iq" });
 
@@ -18,14 +18,14 @@ const syncUser = inngest.createFunction(
       last_name,
       image_url
     } = event.data;
-    const existingUser = await userModel.findOne({ clerkId: id });
+    const existingUser = await User.findOne({ clerkId: id });
 
     if (existingUser) {
       console.log(`User with clerkId ${clerkId} already exists.`);
       return;
     }
 
-    const newUser = new userModel({
+    const newUser = new User({
       clerkId: id,
       email: email_addresses?.[0]?.email_address || "",
       username: `${first_name}_${last_name}`.toLowerCase(),
@@ -44,7 +44,7 @@ const deleteUser = inngest.createFunction(
     await connectToDatabase();
 
     const { id } = event.data;
-    const deletedUser = await userModel.deleteOne({ clerkId: id });
+    const deletedUser = await User.deleteOne({ clerkId: id });
 
     if (!deletedUser) {
       console.log(`No user found with clerkId ${id} to delete.`);
@@ -53,4 +53,7 @@ const deleteUser = inngest.createFunction(
   }
 );
 
-export const functions = [syncUser, deleteUser];
+export const functions = [
+  syncUser,
+  deleteUser
+];
