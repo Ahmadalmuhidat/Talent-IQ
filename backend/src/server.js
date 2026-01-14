@@ -6,7 +6,6 @@ import { serve } from 'inngest/express';
 import { ENV } from './lib/env.js';
 import { inngest, functions } from './lib/inngest.js';
 import { clerkMiddleware } from '@clerk/express';
-import { protectRoutes } from './middlewares/authMiddleware.js';
 import chatRoutes from './routes/chatRoutes.js';
 
 const app = express();
