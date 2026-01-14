@@ -7,6 +7,7 @@ import { ENV } from './lib/env.js';
 import { inngest, functions } from './lib/inngest.js';
 import { clerkMiddleware } from '@clerk/express';
 import chatRoutes from './routes/chatRoutes.js';
+import sessionRoutes from './routes/sessionRoutes.js';
 
 const app = express();
 const __dirname = path.resolve();
@@ -25,6 +26,7 @@ app.use('/api/inngest', serve({
 
 // Protected Routes
 app.get('/api/chat', chatRoutes);
+app.get('/api/session', sessionRoutes);
 
 if (ENV.NODE_ENV === 'production') {
   // Serve static files from the frontend build directory

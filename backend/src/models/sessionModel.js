@@ -1,0 +1,41 @@
+import mongoose from 'mongoose';
+
+const sessionSchema = new mongoose.Schema({
+  host: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  token: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  problem: {
+    type: String,
+    required: true
+  },
+  diffulty: {
+    type: String,
+    enum: ['easy', 'medium', 'hard'],
+    required: true
+  },
+  participants: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null
+  }],
+  status: {
+    type: String,
+    enum: ['active', 'completed'],
+    default: 'active'
+  },
+  callId: {
+    type: String,
+    required: true,
+    unique: true
+  }
+}, { timestamps: true });
+
+const Session = mongoose.model('Session', sessionSchema);
+export default Session;
