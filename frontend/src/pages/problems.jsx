@@ -1,8 +1,12 @@
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { PROBLEMS } from "../data/problems";
-import { ChevronRightIcon, Code2Icon } from "lucide-react";
+import {
+  ChevronRightIcon,
+  Code2Icon
+} from "lucide-react";
 import { getDifficultyBadgeClass } from "../lib/utils";
+import { useEffect } from "react";
 
 function Problems() {
   const problems = Object.values(PROBLEMS);
@@ -29,7 +33,7 @@ function Problems() {
           {problems.map((problem) => (
             <Link
               key={problem.id}
-              to={`/problem/${problem.id}`}
+              to={`/problems/${problem.id}`}
               className="card bg-base-100 hover:scale-[1.01] transition-transform"
             >
               <div className="card-body">
