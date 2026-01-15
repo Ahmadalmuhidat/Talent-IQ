@@ -33,6 +33,11 @@ export async function joinSession(req, res) {
       return res.status(400).json({ message: 'Cannot join a completed session' });
     }
 
+    // Host cannot join as participant
+    if (session.host.toString() === req.user._id.toString()) {
+      return res.status(400).json({ message: 'Host cannot join as participant' });
+    }
+
     // Add user to the session participants
     session.participants.push(req.user._id);
     await session.save();
@@ -45,7 +50,7 @@ export async function joinSession(req, res) {
       message: 'Joined session successfully',
       userId: req.user.clerkId,
       userName: req.user.name
-    }); 
+    });
   } catch (error) {
     return res.status(500).json({ message: 'Internal Server Error' });
   }
@@ -71,17 +76,17 @@ export async function endSession(req, res) {
       return res.status(400).json({ message: 'Session is already completed' });
     }
 
-    // Update session status to 'completed'
-    session.status = 'completed';
-    await session.save();
-
     // Delete the Stream video call
     const call = streamClient.video.call("default", session.callId);
-    await call.delete({hard: true});
+    await call.delete({ hard: true });
 
     // Delete the Stream chat channel
     const chat = chatClient.channel('messaging', session.callId);
     await chat.delete({});
+
+    // Update session status to 'completed'
+    session.status = 'completed';
+    await session.save();
 
     res.status(200).json({ message: 'Session ended successfully' });
   } catch (error) {
