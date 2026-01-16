@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
 import Problems from "./pages/problems";
 import Problem from "./pages/problem";
-import Dashboard from "./pages/dashoard";
+import Dashboard from "./pages/dashboard";
 import Session from "./pages/session";
 
 function App() {

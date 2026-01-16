@@ -77,11 +77,11 @@ export async function joinSession(req, res) {
       return res.status(400).json({ message: "Host cannot join their own session as participant" });
     }
 
-    if (session.participants) {
+    if (session.participants && session.participants.length >= 1) {
       return res.status(409).json({ message: "Session is full" });
     }
 
-    session.participants = userId;
+    session.participants.push(userId);
     await session.save();
 
     const channel = chatClient.channel("messaging", session.callId);
@@ -141,7 +141,7 @@ export async function getRecentSessions(req, res) {
           host: userId
         },
         {
-          participant: userId
+          participants: userId
         }],
     })
       .sort({ createdAt: -1 })

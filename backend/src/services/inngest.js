@@ -28,7 +28,6 @@ const syncUser = inngest.createFunction(
     // Check if user already exists
     const existingUser = await User.findOne({ clerkId: id });
     if (existingUser) {
-      console.log(`User with clerkId ${clerkId} already exists.`);
       return;
     }
 
@@ -60,15 +59,17 @@ const deleteUser = inngest.createFunction(
     await connectToDatabase();
 
     const { id } = event.data;
-    const deletedUser = await User.deleteOne({ clerkId: id });
-
-    if (!deletedUser) {
+    const user = await User.findOne({ clerkId: id });
+    
+    if (!user) {
       console.log(`No user found with clerkId ${id} to delete.`);
       return;
     }
 
+    await User.deleteOne({ clerkId: id });
+
     // Delete user from Stream
-    deleteStreamUser(deletedUser._id.toString());
+    await deleteStreamUser(user._id.toString());
   }
 );
 
