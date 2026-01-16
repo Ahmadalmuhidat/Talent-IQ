@@ -3,7 +3,7 @@ const PISTON_API = 'https://emkc.org/api/v2/piston';
 const LANGUAGES = {
   javascript: {
     name: 'JavaScript',
-    version: '18.14.2',
+    version: '18.15.0',
   },
   python: {
     name: 'Python',
