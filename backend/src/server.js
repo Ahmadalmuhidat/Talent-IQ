@@ -4,7 +4,10 @@ import cors from 'cors';
 import { connectToDatabase } from './lib/database.js';
 import { serve } from 'inngest/express';
 import { ENV } from './lib/env.js';
-import { inngest, functions } from './lib/inngest.js';
+import {
+  inngest,
+  functions
+} from './lib/inngest.js';
 import { clerkMiddleware } from '@clerk/express';
 import chatRoutes from './routes/chatRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';

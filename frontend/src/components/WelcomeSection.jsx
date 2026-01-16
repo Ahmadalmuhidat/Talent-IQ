@@ -1,5 +1,9 @@
 import { useUser } from "@clerk/clerk-react";
-import { ArrowRightIcon, SparklesIcon, ZapIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  SparklesIcon,
+  ZapIcon
+} from "lucide-react";
 
 function WelcomeSection({ onCreateSession }) {
   const { user } = useUser();

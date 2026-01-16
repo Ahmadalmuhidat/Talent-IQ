@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
-import toast from "react-hot-toast";
-import { initializeStreamClient, disconnectStreamClient } from "../lib/stream";
+import {
+  initializeStreamClient,
+  disconnectStreamClient
+} from "../lib/stream";
 import { getStreamToken } from "../api/sessions";
+import toast from "react-hot-toast";
 
 function useStreamClient(session, loadingSession, isHost, isParticipant) {
   const [streamClient, setStreamClient] = useState(null);

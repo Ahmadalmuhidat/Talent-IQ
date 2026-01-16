@@ -1,4 +1,7 @@
-import { TrophyIcon, UsersIcon } from "lucide-react";
+import {
+  TrophyIcon,
+  UsersIcon
+} from "lucide-react";
 
 function StatsCards({ activeSessionsCount, recentSessionsCount }) {
   return (

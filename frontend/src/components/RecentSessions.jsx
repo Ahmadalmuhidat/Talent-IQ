@@ -1,4 +1,10 @@
-import { Code2, Clock, Users, Trophy, Loader } from "lucide-react";
+import {
+  Code2,
+  Clock,
+  Users,
+  Trophy,
+  Loader
+} from "lucide-react";
 import { getDifficultyBadgeClass } from "../lib/utils";
 import { formatDistanceToNow } from "date-fns";
 
@@ -22,11 +28,10 @@ function RecentSessions({ sessions, isLoading }) {
             sessions.map((session) => (
               <div
                 key={session._id}
-                className={`card relative ${
-                  session.status === "active"
+                className={`card relative ${session.status === "active"
                     ? "bg-success/10 border-success/30 hover:border-success/60"
                     : "bg-base-200 border-base-300 hover:border-primary/30"
-                }`}
+                  }`}
               >
                 {session.status === "active" && (
                   <div className="absolute top-3 right-3">
@@ -40,11 +45,10 @@ function RecentSessions({ sessions, isLoading }) {
                 <div className="card-body p-5">
                   <div className="flex items-start gap-3 mb-4">
                     <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                        session.status === "active"
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${session.status === "active"
                           ? "bg-gradient-to-br from-success to-success/70"
                           : "bg-gradient-to-br from-primary to-secondary"
-                      }`}
+                        }`}
                     >
                       <Code2 className="w-6 h-6 text-white" />
                     </div>
