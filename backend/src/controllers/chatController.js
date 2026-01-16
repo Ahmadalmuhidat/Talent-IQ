@@ -1,4 +1,4 @@
-import { generateStreamToken } from '../lib/stream.js';
+import { generateStreamToken } from '../services/stream.js';
 
 export function getChatToken(req, res) {
   try {

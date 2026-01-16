@@ -1,7 +1,7 @@
 import { StreamChat } from 'stream-chat';
 import { StreamClient } from '@stream-io/node-sdk';
 
-import { ENV } from './env.js';
+import { ENV } from '../lib/env.js';
 
 if (!ENV.STREAM_API_KEY || !ENV.STREAM_API_SECRET) {
   throw new Error('Stream API key and secret must be provided in environment variables.');

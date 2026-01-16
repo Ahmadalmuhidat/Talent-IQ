@@ -7,7 +7,7 @@ import {
   useParams
 } from "react-router-dom";
 import { PROBLEMS } from "../data/problems";
-import { executeCode } from "../lib/piston";
+import { executeCode } from "../services/piston";
 import {
   Panel,
   PanelGroup,

@@ -1,6 +1,6 @@
 import { Inngest } from "inngest";
 import User from "../models/userModel.js";
-import { connectToDatabase } from "./database.js";
+import { connectToDatabase } from "../lib/database.js";
 import {
   upsertStreamUser,
   deleteStreamUser

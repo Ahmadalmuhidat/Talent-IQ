@@ -2,7 +2,7 @@ import sessionModel from '../models/sessionModel.js';
 import {
   streamClient,
   chatClient
-} from '../lib/stream.js';
+} from '../services/stream.js';
 
 export async function getSessions(req, res) {
   try {

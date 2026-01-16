@@ -13,7 +13,7 @@ import {
   useSessionById
 } from "../hooks/useSessions";
 import { PROBLEMS } from "../data/problems";
-import { executeCode } from "../lib/piston";
+import { executeCode } from "../services/piston";
 import Navbar from "../components/Navbar";
 import {
   Panel,

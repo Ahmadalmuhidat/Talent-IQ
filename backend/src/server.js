@@ -7,7 +7,7 @@ import { ENV } from './lib/env.js';
 import {
   inngest,
   functions
-} from './lib/inngest.js';
+} from './services/inngest.js';
 import { clerkMiddleware } from '@clerk/express';
 import chatRoutes from './routes/chatRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';

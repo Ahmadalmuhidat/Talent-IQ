@@ -3,7 +3,7 @@ import { StreamChat } from "stream-chat";
 import {
   initializeStreamClient,
   disconnectStreamClient
-} from "../lib/stream";
+} from "../services/stream";
 import { getStreamToken } from "../api/sessions";
 import toast from "react-hot-toast";
 
