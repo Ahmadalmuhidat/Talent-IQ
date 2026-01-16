@@ -25,8 +25,8 @@ app.use('/api/inngest', serve({
 }));
 
 // Protected Routes
-app.get('/api/chat', chatRoutes);
-app.get('/api/session', sessionRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/sessions', sessionRoutes);
 
 if (ENV.NODE_ENV === 'production') {
   // Serve static files from the frontend build directory
