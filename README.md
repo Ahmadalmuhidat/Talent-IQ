@@ -1,5 +1,7 @@
 # 💻 Talent-IQ Platform
 
+![Talent-IQ App](/assets/screenshot-for-readme.png)
+
 A real-time collaborative coding interview platform built with modern web technologies. Conduct technical interviews with video calls, collaborative code editing, and secure code execution.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
