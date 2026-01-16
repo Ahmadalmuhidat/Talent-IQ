@@ -1,6 +1,6 @@
-# 💻 Talent-IQ Platform
-
 ![Talent-IQ App](/assets/screenshot-for-readme.png)
+
+# 💻 Talent-IQ Platform
 
 A real-time collaborative coding interview platform built with modern web technologies. Conduct technical interviews with video calls, collaborative code editing, and secure code execution.
 
