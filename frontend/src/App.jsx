@@ -9,6 +9,7 @@ import Home from "./pages/home";
 import Problems from "./pages/problems";
 import Problem from "./pages/problem";
 import Dashboard from "./pages/dashoard";
+import Session from "./pages/session";
 
 function App() {
   const { isSignedIn, isLoaded } = useUser();
@@ -36,6 +37,10 @@ function App() {
         <Route
           path="/dashboard"
           element={isSignedIn ? <Dashboard /> : <Navigate to={"/"} />}
+        />
+        <Route
+          path="/session/:id"
+          element={isSignedIn ? <Session /> : <Navigate to={"/"} />}
         />
         <Route
           path="*"

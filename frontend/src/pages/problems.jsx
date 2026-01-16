@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { PROBLEMS } from "../data/problems";
 import {
@@ -6,7 +6,6 @@ import {
   Code2Icon
 } from "lucide-react";
 import { getDifficultyBadgeClass } from "../lib/utils";
-import { useEffect } from "react";
 
 function Problems() {
   const problems = Object.values(PROBLEMS);

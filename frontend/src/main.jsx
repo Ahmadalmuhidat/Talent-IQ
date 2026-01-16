@@ -9,10 +9,10 @@ import {
 import './index.css'
 import App from './App.jsx'
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
-  throw new Error('Missing Stripe publishable key. Please set VITE_STRIPE_PUBLISHABLE_KEY in your environment variables.');
+  throw new Error('Missing Stripe publishable key. Please set VITE_CLERK_PUBLISHABLE_KEY in your environment variables.');
 }
 
 const queryClient = new QueryClient();

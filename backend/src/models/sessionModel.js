@@ -6,16 +6,11 @@ const sessionSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  token: {
-    type: String,
-    required: true,
-    unique: true
-  },
   problem: {
     type: String,
     required: true
   },
-  diffulty: {
+  difficulty: {
     type: String,
     enum: ['easy', 'medium', 'hard'],
     required: true

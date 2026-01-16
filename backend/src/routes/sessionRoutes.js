@@ -13,11 +13,13 @@ import { protectRoutes } from '../middlewares/authMiddleware.js';
 const router = express.Router();
 
 router.get('/', protectRoutes, getSessions);
-router.get('/recent', protectRoutes, getRecentSessions);
-router.get('/:id', protectRoutes, getSessionById);
-router.get('/:id/join', protectRoutes, joinSession);
-router.get('/:id/end', protectRoutes, endSession);
-router.get('/active', protectRoutes, getActiveSessions);
 router.post('/', protectRoutes, createSession);
+
+router.get('/recent', protectRoutes, getRecentSessions);
+router.get('/active', protectRoutes, getActiveSessions);
+
+router.post('/:id/join', protectRoutes, joinSession);
+router.post('/:id/end', protectRoutes, endSession);
+router.get('/:id', protectRoutes, getSessionById);
 
 export default router;
