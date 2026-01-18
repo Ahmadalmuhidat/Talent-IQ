@@ -3,7 +3,7 @@ import {
   ArrowRightIcon,
   CheckIcon,
   Code2Icon,
-  SparklesIcon,
+  BrainCircuit,
   UsersIcon,
   VideoIcon,
   ZapIcon,
@@ -22,7 +22,7 @@ function Home() {
             className="flex items-center gap-3 hover:scale-105 transition-transform duration-200"
           >
             <div className="size-10 rounded-xl bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center shadow-lg">
-              <SparklesIcon className="size-6 text-white" />
+              <BrainCircuit className="size-6 text-white" />
             </div>
 
             <div className="flex flex-col">

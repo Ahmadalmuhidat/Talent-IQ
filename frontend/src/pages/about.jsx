@@ -3,6 +3,7 @@ import {
   UsersIcon,
   Code2Icon,
   VideoIcon,
+  BrainCircuit,
   ZapIcon,
   ShieldCheckIcon,
   GlobeIcon
@@ -167,7 +168,7 @@ const About = () => {
         <aside>
           <div className="flex items-center gap-3 mb-4">
             <div className="size-8 rounded-lg bg-gradient-to-r from-primary via-secondary to-accent flex items-center justify-center">
-              <ZapIcon className="size-5 text-white" />
+              <BrainCircuit className="size-5 text-white" />
             </div>
             <span className="font-bold text-xl">Talent IQ</span>
           </div>
