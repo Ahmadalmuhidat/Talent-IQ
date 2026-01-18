@@ -17,12 +17,12 @@ const About = () => {
       description: "Code together with your peers in real-time. Experience seamless synchronization and instant feedback."
     },
     {
-      icon: <VideoIcon className="w-6 h-6 text-secondary" />,
+      icon: <VideoIcon className="w-6 h-6 text-primary" />,
       title: "Integrated Video Calls",
       description: "High-quality video and audio communication powered by Stream, making remote interviews feel personal."
     },
     {
-      icon: <Code2Icon className="w-6 h-6 text-accent" />,
+      icon: <Code2Icon className="w-6 h-6 text-primary" />,
       title: "Multi-language Support",
       description: "Execute code in JavaScript, Python, and Java with our integrated Piston-powered engine."
     },
@@ -61,9 +61,9 @@ const About = () => {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 -z-10" />
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-primary  bg-clip-text text-transparent">
               Elevating the Interview Experience
             </h1>
             <p className="text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
@@ -111,7 +111,7 @@ const About = () => {
                 </div>
                 <div className="stat">
                   <div className="stat-title text-base-content/60">Community</div>
-                  <div className="stat-value text-secondary">50k+</div>
+                  <div className="stat-value text-primary">50k+</div>
                   <div className="stat-desc">Users joined last month</div>
                 </div>
               </div>
@@ -123,7 +123,7 @@ const About = () => {
         <section className="py-20 bg-gradient-to-t from-base-200 to-base-100">
           <div className="max-w-7xl mx-auto px-4">
             <div className="card lg:card-side bg-base-100 shadow-2xl overflow-hidden border border-base-300">
-              <figure className="lg:w-1/3 bg-gradient-to-br from-primary via-secondary to-accent p-12 flex items-center justify-center">
+              <figure className="lg:w-1/3 bg-gradient-to-br from-primary p-12 flex items-center justify-center">
                 <div className="w-48 h-48 rounded-full overflow-hidden bg-white/10 backdrop-blur-md flex items-center justify-center border-2 border-white/20 shadow-2xl transition-transform hover:scale-105 duration-300">
                   <img
                     src="/ahmad_almuhidat.jpg"
@@ -167,7 +167,7 @@ const About = () => {
       <footer className="footer footer-center p-10 bg-base-100 text-base-content border-t border-base-300">
         <aside>
           <div className="flex items-center gap-3 mb-4">
-            <div className="size-8 rounded-lg bg-gradient-to-r from-primary via-secondary to-accent flex items-center justify-center">
+            <div className="size-8 rounded-lg bg-gradient-to-r from-primary flex items-center justify-center">
               <BrainCircuit className="size-5 text-white" />
             </div>
             <span className="font-bold text-xl">Talent IQ</span>
