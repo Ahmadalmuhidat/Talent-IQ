@@ -14,7 +14,6 @@ import {
 } from "../hooks/useSessions";
 import { PROBLEMS } from "../data/problems";
 import { executeCode } from "../services/piston";
-import Navbar from "../components/Navbar";
 import {
   Panel,
   PanelGroup,
@@ -24,7 +23,8 @@ import { getDifficultyBadgeClass } from "../lib/utils";
 import {
   Loader2Icon,
   LogOutIcon,
-  PhoneOffIcon
+  PhoneOffIcon,
+  UsersIcon
 } from "lucide-react";
 import CodeEditorPanel from "../components/CodeEditorPanel";
 import OutputPanel from "../components/OutputPanel";
@@ -116,71 +116,71 @@ function Session() {
   };
 
   return (
-    <div className="h-screen bg-base-100 flex flex-col">
-      <Navbar />
-
-      <div className="flex-1">
+    <div className="h-screen bg-lc-bg text-lc-text-primary flex flex-col">
+      <div className="flex-1 overflow-hidden">
         <PanelGroup direction="horizontal">
           {/* LEFT PANEL - CODE EDITOR & PROBLEM DETAILS */}
           <Panel defaultSize={50} minSize={30}>
             <PanelGroup direction="vertical">
               {/* PROBLEM DSC PANEL */}
               <Panel defaultSize={50} minSize={20}>
-                <div className="h-full overflow-y-auto bg-base-200">
+                <div className="h-full overflow-y-auto bg-lc-bg">
                   {/* HEADER SECTION */}
-                  <div className="p-6 bg-base-100 border-b border-base-300">
+                  <div className="p-6 bg-lc-layer-1 border-b border-lc-border">
                     <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h1 className="text-3xl font-bold text-base-content">
+                      <div className="flex-1 min-w-0 pr-4">
+                        <h1 className="text-2xl font-bold text-lc-text-primary truncate">
                           {session?.problem || "Loading..."}
                         </h1>
-                        {problemData?.category && (
-                          <p className="text-base-content/60 mt-1">{problemData.category}</p>
-                        )}
-                        <p className="text-base-content/60 mt-2">
-                          {session?.participants?.length >= 1 ? 2 : 1}/2 participants
-                        </p>
+                        <div className="flex items-center gap-4 mt-2">
+                          {problemData?.category && (
+                            <span className="text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest">{problemData.category}</span>
+                          )}
+                          <div className="flex items-center gap-1.5 text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest">
+                            <UsersIcon className="size-3" />
+                            <span>{session?.participants?.length >= 1 ? 2 : 1}/2 Active</span>
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 shrink-0">
                         <span
-                          className={`badge badge-lg ${getDifficultyBadgeClass(
+                          className={`px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider ${getDifficultyBadgeClass(
                             session?.difficulty
                           )}`}
                         >
-                          {session?.difficulty.slice(0, 1).toUpperCase() +
-                            session?.difficulty.slice(1) || "Easy"}
+                          {session?.difficulty || "Easy"}
                         </span>
                         {isHost && session?.status === "active" && (
                           <button
                             onClick={handleEndSession}
                             disabled={endSessionMutation.isPending}
-                            className="btn btn-error btn-sm gap-2"
+                            className="flex items-center gap-2 px-3 py-1.5 bg-hard/10 hover:bg-hard/20 text-hard text-xs font-bold rounded border border-hard/20 transition-all active:scale-95"
                           >
                             {endSessionMutation.isPending ? (
-                              <Loader2Icon className="w-4 h-4 animate-spin" />
+                              <Loader2Icon className="size-3.5 animate-spin" />
                             ) : (
-                              <LogOutIcon className="w-4 h-4" />
+                              <LogOutIcon className="size-3.5" />
                             )}
-                            End Session
+                            End
                           </button>
                         )}
                         {session?.status === "completed" && (
-                          <span className="badge badge-ghost badge-lg">Completed</span>
+                          <span className="px-2 py-1 bg-lc-layer-2 text-lc-text-secondary text-[10px] font-bold uppercase rounded border border-lc-border">Completed</span>
                         )}
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-6 space-y-6">
+                  <div className="p-6 space-y-8">
                     {/* problem desc */}
                     {problemData?.description && (
-                      <div className="bg-base-100 rounded-xl shadow-sm p-5 border border-base-300">
-                        <h2 className="text-xl font-bold mb-4 text-base-content">Description</h2>
-                        <div className="space-y-3 text-base leading-relaxed">
-                          <p className="text-base-content/90">{problemData.description.text}</p>
+                      <div className="bg-lc-layer-1 rounded-xl p-6 border border-lc-border shadow-sm">
+                        <h2 className="text-sm font-bold mb-4 text-lc-text-primary uppercase tracking-widest opacity-60">Description</h2>
+                        <div className="space-y-4 text-sm leading-loose font-medium text-lc-text-primary/90">
+                          <p>{problemData.description.text}</p>
                           {problemData.description.notes?.map((note, idx) => (
-                            <p key={idx} className="text-base-content/90">
+                            <p key={idx} className="bg-lc-layer-2/50 border-l-2 border-brand-orange pl-4 italic">
                               {note}
                             </p>
                           ))}
@@ -190,35 +190,29 @@ function Session() {
 
                     {/* examples section */}
                     {problemData?.examples && problemData.examples.length > 0 && (
-                      <div className="bg-base-100 rounded-xl shadow-sm p-5 border border-base-300">
-                        <h2 className="text-xl font-bold mb-4 text-base-content">Examples</h2>
+                      <div className="space-y-4">
+                        <h2 className="text-sm font-bold text-lc-text-primary uppercase tracking-widest opacity-60 ml-1">Examples</h2>
 
                         <div className="space-y-4">
                           {problemData.examples.map((example, idx) => (
-                            <div key={idx}>
-                              <div className="flex items-center gap-2 mb-2">
-                                <span className="badge badge-sm">{idx + 1}</span>
-                                <p className="font-semibold text-base-content">Example {idx + 1}</p>
+                            <div key={idx} className="bg-lc-layer-1 border border-lc-border rounded-xl overflow-hidden shadow-sm">
+                              <div className="px-4 py-2 bg-lc-layer-2 border-b border-lc-border flex items-center gap-2">
+                                <span className="size-5 rounded-full bg-lc-bg border border-lc-border flex items-center justify-center text-[10px] font-black">{idx + 1}</span>
+                                <p className="text-[10px] font-black uppercase tracking-tighter opacity-80">Example Case</p>
                               </div>
-                              <div className="bg-base-200 rounded-lg p-4 font-mono text-sm space-y-1.5">
-                                <div className="flex gap-2">
-                                  <span className="text-primary font-bold min-w-[70px]">
-                                    Input:
-                                  </span>
-                                  <span>{example.input}</span>
+                              <div className="p-4 font-mono text-xs space-y-2">
+                                <div className="flex gap-4">
+                                  <span className="text-brand-orange font-bold w-16 opacity-70">Input</span>
+                                  <span className="text-lc-text-primary font-medium">{example.input}</span>
                                 </div>
-                                <div className="flex gap-2">
-                                  <span className="text-secondary font-bold min-w-[70px]">
-                                    Output:
-                                  </span>
-                                  <span>{example.output}</span>
+                                <div className="flex gap-4">
+                                  <span className="text-green-500 font-bold w-16 opacity-70">Output</span>
+                                  <span className="text-lc-text-primary font-medium">{example.output}</span>
                                 </div>
                                 {example.explanation && (
-                                  <div className="pt-2 border-t border-base-300 mt-2">
-                                    <span className="text-base-content/60 font-sans text-xs">
-                                      <span className="font-semibold">Explanation:</span>{" "}
-                                      {example.explanation}
-                                    </span>
+                                  <div className="pt-2 border-t border-lc-border mt-2 text-[11px] font-sans text-lc-text-secondary italic">
+                                    <span className="font-bold uppercase text-[9px] not-italic mr-2">Explanation</span>
+                                    {example.explanation}
                                   </div>
                                 )}
                               </div>
@@ -230,13 +224,13 @@ function Session() {
 
                     {/* Constraints */}
                     {problemData?.constraints && problemData.constraints.length > 0 && (
-                      <div className="bg-base-100 rounded-xl shadow-sm p-5 border border-base-300">
-                        <h2 className="text-xl font-bold mb-4 text-base-content">Constraints</h2>
-                        <ul className="space-y-2 text-base-content/90">
+                      <div className="bg-lc-layer-1 rounded-xl p-6 border border-lc-border shadow-sm">
+                        <h2 className="text-sm font-bold mb-4 text-lc-text-primary uppercase tracking-widest opacity-60">Constraints</h2>
+                        <ul className="space-y-3">
                           {problemData.constraints.map((constraint, idx) => (
-                            <li key={idx} className="flex gap-2">
-                              <span className="text-primary">•</span>
-                              <code className="text-sm">{constraint}</code>
+                            <li key={idx} className="flex gap-3 items-start">
+                              <span className="text-brand-orange font-bold mt-0.5">•</span>
+                              <code className="bg-lc-layer-2 px-1.5 py-0.5 rounded text-[11px] font-mono text-lc-text-primary">{constraint}</code>
                             </li>
                           ))}
                         </ul>
@@ -246,7 +240,7 @@ function Session() {
                 </div>
               </Panel>
 
-              <PanelResizeHandle className="h-2 bg-base-300 hover:bg-primary transition-colors cursor-row-resize" />
+              <PanelResizeHandle className="h-1 bg-lc-border hover:bg-brand-orange/30 transition-colors cursor-row-resize" />
 
               <Panel defaultSize={50} minSize={20}>
                 <PanelGroup direction="vertical">
@@ -261,7 +255,7 @@ function Session() {
                     />
                   </Panel>
 
-                  <PanelResizeHandle className="h-2 bg-base-300 hover:bg-primary transition-colors cursor-row-resize" />
+                  <PanelResizeHandle className="h-1 bg-lc-border hover:bg-brand-orange/30 transition-colors cursor-row-resize" />
 
                   <Panel defaultSize={30} minSize={15}>
                     <OutputPanel output={output} />
@@ -271,28 +265,26 @@ function Session() {
             </PanelGroup>
           </Panel>
 
-          <PanelResizeHandle className="w-2 bg-base-300 hover:bg-primary transition-colors cursor-col-resize" />
+          <PanelResizeHandle className="w-1 bg-lc-border hover:bg-brand-orange/30 transition-colors cursor-col-resize" />
 
           {/* RIGHT PANEL - VIDEO CALLS & CHAT */}
           <Panel defaultSize={50} minSize={30}>
-            <div className="h-full bg-base-200 p-4 overflow-auto">
+            <div className="h-full bg-lc-bg p-4 overflow-auto">
               {isInitializingCall ? (
                 <div className="h-full flex items-center justify-center">
                   <div className="text-center">
-                    <Loader2Icon className="w-12 h-12 mx-auto animate-spin text-primary mb-4" />
-                    <p className="text-lg">Connecting to video call...</p>
+                    <Loader2Icon className="size-10 mx-auto animate-spin text-brand-orange mb-4" />
+                    <p className="text-sm font-bold uppercase tracking-widest opacity-60">Connecting Call...</p>
                   </div>
                 </div>
               ) : !streamClient || !call ? (
                 <div className="h-full flex items-center justify-center">
-                  <div className="card bg-base-100 shadow-xl max-w-md">
-                    <div className="card-body items-center text-center">
-                      <div className="w-24 h-24 bg-error/10 rounded-full flex items-center justify-center mb-4">
-                        <PhoneOffIcon className="w-12 h-12 text-error" />
-                      </div>
-                      <h2 className="card-title text-2xl">Connection Failed</h2>
-                      <p className="text-base-content/70">Unable to connect to the video call</p>
+                  <div className="bg-lc-layer-1 border border-lc-border rounded-[2rem] p-10 text-center max-w-sm shadow-2xl">
+                    <div className="size-20 bg-hard/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-hard/20">
+                      <PhoneOffIcon className="size-10 text-hard" />
                     </div>
+                    <h2 className="text-xl font-bold mb-2">Connection Failed</h2>
+                    <p className="text-xs text-lc-text-secondary font-medium leading-relaxed">Unable to establish a secure video link. Please check your network and try again.</p>
                   </div>
                 </div>
               ) : (
@@ -309,6 +301,7 @@ function Session() {
         </PanelGroup>
       </div>
     </div>
+
   );
 }
 

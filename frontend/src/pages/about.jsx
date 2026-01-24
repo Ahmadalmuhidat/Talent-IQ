@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import {
   UsersIcon,
   Code2Icon,
@@ -55,37 +54,39 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-base-100 flex flex-col">
-      <Navbar />
-
+    <div className="min-h-screen bg-lc-bg text-lc-text-primary flex flex-col">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 -z-10" />
+        <section className="relative py-24 overflow-hidden border-b border-lc-border">
+          <div className="absolute inset-0 bg-brand-orange/5 -z-10" />
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-primary  bg-clip-text text-transparent">
-              Elevating the Interview Experience
+            <div className="inline-block p-2 rounded-full bg-brand-orange/10 text-brand-orange font-black text-[10px] mb-6 uppercase tracking-widest border border-brand-orange/20">
+              Behind the Scenes
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+              Elevating Technical <span className="text-brand-orange italic">Assessment.</span>
             </h1>
-            <p className="text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-lc-text-secondary max-w-3xl mx-auto leading-relaxed font-medium">
               Talent IQ is a state-of-the-art collaborative platform designed to bridge the gap between technical assessment and human connection.
             </p>
           </div>
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 bg-base-200/50">
+        <section className="py-24">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">Core Features</h2>
+            <h2 className="text-2xl font-black mb-12 text-center uppercase tracking-tighter">Core Capabilities</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="card bg-base-100 shadow-xl border border-base-300 hover:border-primary transition-all duration-300 group">
-                  <div className="card-body">
-                    <div className="w-12 h-12 rounded-lg bg-base-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      {feature.icon}
-                    </div>
-                    <h3 className="card-title text-xl mb-2">{feature.title}</h3>
-                    <p className="text-base-content/60 leading-relaxed">{feature.description}</p>
+                <div key={index} className="bg-lc-layer-1 border border-lc-border rounded-2xl p-8 hover:bg-lc-layer-2 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-lc-layer-2 border border-lc-border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                    {feature.icon.props.className.includes("text-primary")
+                      ? <feature.icon.type {...feature.icon.props} className="w-6 h-6 text-brand-orange" />
+                      : feature.icon
+                    }
                   </div>
+                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                  <p className="text-sm text-lc-text-secondary leading-relaxed font-medium">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -93,55 +94,54 @@ const About = () => {
         </section>
 
         {/* Mission Section */}
-        <section className="py-20">
+        <section className="py-24 bg-lc-layer-1 border-y border-lc-border">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <div className="inline-block p-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6 uppercase tracking-widest">
-              Our Mission
+            <div className="inline-block p-2 px-4 rounded-full bg-lc-layer-2 text-lc-text-secondary font-bold text-[10px] mb-8 uppercase tracking-widest border border-lc-border">
+              Our Vision
             </div>
-            <h2 className="text-4xl font-bold mb-8">Empowering Developers to Connect</h2>
-            <p className="text-lg text-base-content/80 leading-relaxed mb-8">
+            <h2 className="text-4xl font-black mb-10 tracking-tighter">Empowering Connections.</h2>
+            <p className="text-lg text-lc-text-secondary leading-relaxed mb-12 font-medium">
               We believe that the best technical interviews are conversations, not interrogations. Our platform is built to facilitate these conversations by removing technical barriers and providing a playground where both candidates and interviewers can thrive.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="stats shadow bg-base-100 border border-base-300">
-                <div className="stat">
-                  <div className="stat-title text-base-content/60">Success Rate</div>
-                  <div className="stat-value text-primary">99.9%</div>
-                  <div className="stat-desc">Uptime guaranteed</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-title text-base-content/60">Community</div>
-                  <div className="stat-value text-primary">50k+</div>
-                  <div className="stat-desc">Users joined last month</div>
-                </div>
+
+            <div className="flex flex-wrap justify-center gap-6">
+              <div className="bg-lc-layer-2 border border-lc-border rounded-2xl p-6 min-w-[200px]">
+                <div className="text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest mb-1">Success Rate</div>
+                <div className="text-3xl font-black text-brand-orange">99.9%</div>
+              </div>
+              <div className="bg-lc-layer-2 border border-lc-border rounded-2xl p-6 min-w-[200px]">
+                <div className="text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest mb-1">Monthly Users</div>
+                <div className="text-3xl font-black text-brand-orange">50k+</div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Creator Section */}
-        <section className="py-20 bg-gradient-to-t from-base-200 to-base-100">
+        <section className="py-24">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="card lg:card-side bg-base-100 shadow-2xl overflow-hidden border border-base-300">
-              <figure className="lg:w-1/3 bg-gradient-to-br from-primary p-12 flex items-center justify-center">
-                <div className="w-48 h-48 rounded-full overflow-hidden bg-white/10 backdrop-blur-md flex items-center justify-center border-2 border-white/20 shadow-2xl transition-transform hover:scale-105 duration-300">
+            <div className="bg-lc-layer-1 border border-lc-border rounded-[2rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+              <div className="lg:w-1/3 bg-lc-layer-2 p-12 flex items-center justify-center border-r border-lc-border">
+                <div className="size-48 rounded-full overflow-hidden border-4 border-brand-orange/20 shadow-2xl transition-transform hover:scale-110 duration-500">
                   <img
                     src="/ahmad_almuhidat.jpg"
                     alt="Ahmad Almuhidat"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
-              </figure>
-              <div className="card-body lg:w-2/3">
-                <h2 className="card-title text-3xl font-bold mb-4">Behind the Platform</h2>
-                <p className="text-xl text-primary font-semibold mb-4">Ahmad Almuhidat — Senior Software Developer</p>
-                <p className="text-base-content/70 leading-relaxed mb-6">
-                  "I built Talent IQ with a simple goal: to create the interview experience I always wished I had. As a developer, I know that technical screenings can be stressful. My mission is to transform that stress into a collaborative, productive session that truly showcases a candidate's potential through modern, real-time tools."
+              </div>
+              <div className="p-12 lg:w-2/3 flex flex-col justify-center">
+                <div className="mb-6">
+                  <h2 className="text-3xl font-black mb-2 tracking-tighter">Ahmad Almuhidat</h2>
+                  <p className="text-xs font-bold text-brand-orange uppercase tracking-widest">Founder & Lead Architect</p>
+                </div>
+                <p className="text-lg text-lc-text-secondary leading-relaxed mb-10 italic font-medium">
+                  "I built Talent IQ with a simple goal: to create the interview experience I always wished I had. My mission is to transform technical screenings into collaborative, productive sessions that truly showcase a candidate's potential."
                 </p>
-                <div className="flex gap-4">
-                  <div className="badge badge-outline p-4">Full Stack Architecture</div>
-                  <div className="badge badge-outline p-4">Real-time Engineering</div>
-                  <div className="badge badge-outline p-4">Product Design</div>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-lc-layer-2 border border-lc-border rounded text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest">Full-Stack Architecture</span>
+                  <span className="px-3 py-1 bg-lc-layer-2 border border-lc-border rounded text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest">Real-time Engineering</span>
+                  <span className="px-3 py-1 bg-lc-layer-2 border border-lc-border rounded text-[10px] font-bold text-lc-text-secondary uppercase tracking-widest">Product Design</span>
                 </div>
               </div>
             </div>
@@ -149,14 +149,14 @@ const About = () => {
         </section>
 
         {/* Tech Stack Section */}
-        <section className="py-20 bg-base-200">
+        <section className="py-24 bg-lc-layer-1 border-t border-lc-border">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">Powered By Modern Technology</h2>
-            <div className="flex flex-wrap justify-center gap-6">
+            <h2 className="text-2xl font-black mb-16 text-center uppercase tracking-tighter">Powered By</h2>
+            <div className="flex flex-wrap justify-center gap-4">
               {techStack.map((tech, index) => (
-                <div key={index} className="px-6 py-4 rounded-2xl bg-base-100 shadow-lg border border-base-300 flex flex-col items-center min-w-[140px] hover:scale-105 transition-transform cursor-default">
-                  <span className={`text-lg font-bold ${tech.color}`}>{tech.name}</span>
-                  <span className="text-xs text-base-content/50 uppercase tracking-tighter mt-1">{tech.category}</span>
+                <div key={index} className="px-5 py-3 rounded-xl bg-lc-layer-2 border border-lc-border flex flex-col items-center min-w-[150px] hover:border-brand-orange/40 transition-colors shadow-sm">
+                  <span className={`text-sm font-black ${tech.color.includes('text-primary') ? 'text-brand-orange' : tech.color}`}>{tech.name}</span>
+                  <span className="text-[10px] text-lc-text-secondary/50 font-bold uppercase tracking-widest mt-1">{tech.category}</span>
                 </div>
               ))}
             </div>
@@ -164,21 +164,22 @@ const About = () => {
         </section>
       </main>
 
-      <footer className="footer footer-center p-10 bg-base-100 text-base-content border-t border-base-300">
-        <aside>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="size-8 rounded-lg bg-gradient-to-r from-primary flex items-center justify-center">
-              <BrainCircuit className="size-5 text-white" />
+      <footer className="py-12 bg-lc-bg text-lc-text-secondary border-t border-lc-border text-center">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-center gap-2 mb-6 grayscale opacity-60">
+            <div className="size-6 rounded bg-lc-layer-1 flex items-center justify-center border border-lc-border">
+              <BrainCircuit className="size-4" />
             </div>
-            <span className="font-bold text-xl">Talent IQ</span>
+            <span className="font-bold text-sm tracking-tight">TalentIQ</span>
           </div>
-          <p className="font-bold">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4">
             Built for developers, by Ahmad Almuhidat.
           </p>
-          <p>Copyright © 2026 - All rights reserved</p>
-        </aside>
+          <p className="text-[10px] font-bold opacity-30">© 2026 - NO RIGHTS RESERVED. CODE AWAY.</p>
+        </div>
       </footer>
     </div>
+
   );
 };
 

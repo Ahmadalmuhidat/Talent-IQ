@@ -2,94 +2,86 @@ import { getDifficultyBadgeClass } from "../lib/utils";
 
 function ProblemDescription({ problem, currentProblemId, onProblemChange, allProblems }) {
   return (
-    <div className="h-full overflow-y-auto bg-base-200">
+    <div className="h-full overflow-y-auto bg-lc-bg border-r border-lc-border">
       {/* HEADER SECTION */}
-      <div className="p-6 bg-base-100 border-b border-base-300">
-        <div className="flex items-start justify-between mb-3">
-          <h1 className="text-3xl font-bold text-base-content">{problem.title}</h1>
-          <span className={`badge ${getDifficultyBadgeClass(problem.difficulty)}`}>
+      <div className="p-4 border-b border-lc-border">
+        <div className="flex items-center gap-3 mb-2">
+          <h1 className="text-xl font-bold text-lc-text-primary">{problem.title}</h1>
+          <span className={`px-2 py-0.5 rounded text-xs font-medium ${getDifficultyBadgeClass(problem.difficulty)}`}>
             {problem.difficulty}
           </span>
         </div>
-        <p className="text-base-content/60">{problem.category}</p>
 
         {/* Problem selector */}
-        <div className="mt-4">
+        <div className="mt-2">
           <select
-            className="select select-sm w-full"
+            className="w-full bg-lc-layer-1 text-lc-text-primary text-sm border border-lc-border rounded px-2 py-1 outline-none focus:border-brand-orange"
             value={currentProblemId}
             onChange={(e) => onProblemChange(e.target.value)}
           >
             {allProblems.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.title} - {p.difficulty}
+                {p.title}
               </option>
             ))}
           </select>
         </div>
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="p-4 space-y-6">
         {/* PROBLEM DESC */}
-        <div className="bg-base-100 rounded-xl shadow-sm p-5 border border-base-300">
-          <h2 className="text-xl font-bold text-base-content">Description</h2>
-
-          <div className="space-y-3 text-base leading-relaxed">
-            <p className="text-base-content/90">{problem.description.text}</p>
+        <div>
+          <h2 className="text-sm font-semibold text-lc-text-primary mb-3 uppercase tracking-wider">Description</h2>
+          <div className="space-y-4 text-sm leading-relaxed text-lc-text-secondary">
+            <p>{problem.description.text}</p>
             {problem.description.notes.map((note, idx) => (
-              <p key={idx} className="text-base-content/90">
-                {note}
-              </p>
+              <p key={idx}>{note}</p>
             ))}
           </div>
         </div>
 
         {/* EXAMPLES SECTION */}
-        <div className="bg-base-100 rounded-xl shadow-sm p-5 border border-base-300">
-          <h2 className="text-xl font-bold mb-4 text-base-content">Examples</h2>
-          <div className="space-y-4">
-            {problem.examples.map((example, idx) => (
-              <div key={idx}>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="badge badge-sm">{idx + 1}</span>
-                  <p className="font-semibold text-base-content">Example {idx + 1}</p>
+        <div className="space-y-4">
+          <h2 className="text-sm font-semibold text-lc-text-primary uppercase tracking-wider">Examples</h2>
+          {problem.examples.map((example, idx) => (
+            <div key={idx} className="space-y-2">
+              <p className="font-semibold text-lc-text-primary text-sm">Example {idx + 1}:</p>
+              <div className="bg-lc-layer-1 border border-lc-border rounded-lg p-3 font-mono text-xs space-y-1">
+                <div className="flex gap-2">
+                  <span className="text-lc-text-primary font-bold min-w-[50px]">Input:</span>
+                  <span className="text-lc-text-secondary">{example.input}</span>
                 </div>
-                <div className="bg-base-200 rounded-lg p-4 font-mono text-sm space-y-1.5">
-                  <div className="flex gap-2">
-                    <span className="text-primary font-bold min-w-[70px]">Input:</span>
-                    <span>{example.input}</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="text-secondary font-bold min-w-[70px]">Output:</span>
-                    <span>{example.output}</span>
-                  </div>
-                  {example.explanation && (
-                    <div className="pt-2 border-t border-base-300 mt-2">
-                      <span className="text-base-content/60 font-sans text-xs">
-                        <span className="font-semibold">Explanation:</span> {example.explanation}
-                      </span>
-                    </div>
-                  )}
+                <div className="flex gap-2">
+                  <span className="text-lc-text-primary font-bold min-w-[50px]">Output:</span>
+                  <span className="text-lc-text-secondary">{example.output}</span>
                 </div>
+                {example.explanation && (
+                  <div className="pt-2 border-t border-lc-border mt-1">
+                    <span className="text-lc-text-secondary">
+                      <span className="font-semibold italic">Explanation:</span> {example.explanation}
+                    </span>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         {/* CONSTRAINTS */}
-        <div className="bg-base-100 rounded-xl shadow-sm p-5 border border-base-300">
-          <h2 className="text-xl font-bold mb-4 text-base-content">Constraints</h2>
-          <ul className="space-y-2 text-base-content/90">
+        <div>
+          <h2 className="text-sm font-semibold text-lc-text-primary mb-3 uppercase tracking-wider">Constraints</h2>
+          <ul className="space-y-2 text-sm text-lc-text-secondary">
             {problem.constraints.map((constraint, idx) => (
               <li key={idx} className="flex gap-2">
-                <span className="text-primary">•</span>
-                <code className="text-sm">{constraint}</code>
+                <span className="text-brand-orange">•</span>
+                <code>{constraint}</code>
               </li>
             ))}
           </ul>
         </div>
       </div>
     </div>
+
   );
 }
 

@@ -14,33 +14,45 @@ function CodeEditorPanel({
   onRunCode,
 }) {
   return (
-    <div className="h-full bg-base-300 flex flex-col">
-      <div className="flex items-center justify-between px-4 py-3 bg-base-100 border-t border-base-300">
-        <div className="flex items-center gap-3">
+    <div className="h-full bg-lc-bg flex flex-col">
+      <div className="flex items-center justify-between px-4 h-10 bg-lc-layer-1 border-b border-lc-border">
+        <div className="flex items-center gap-2">
           <img
             src={LANGUAGE_CONFIG[selectedLanguage].icon}
             alt={LANGUAGE_CONFIG[selectedLanguage].name}
-            className="size-6"
+            className="size-4"
           />
-          <select className="select select-sm" value={selectedLanguage} onChange={onLanguageChange}>
+          <select
+            className="bg-transparent text-lc-text-primary text-xs font-medium outline-none cursor-pointer hover:bg-lc-layer-2 px-2 py-1 rounded transition-colors"
+            value={selectedLanguage}
+            onChange={onLanguageChange}
+          >
             {Object.entries(LANGUAGE_CONFIG).map(([key, lang]) => (
-              <option key={key} value={key}>
+              <option key={key} value={key} className="bg-lc-layer-1 text-lc-text-primary">
                 {lang.name}
               </option>
             ))}
           </select>
         </div>
 
-        <button className="btn btn-primary btn-sm gap-2" disabled={isRunning} onClick={onRunCode}>
+        <button
+          className={`flex items-center gap-2 px-3 py-1 rounded text-xs font-bold transition-all
+            ${isRunning
+              ? "bg-lc-layer-2 text-lc-text-secondary cursor-not-allowed"
+              : "bg-lc-layer-2 text-green-500 hover:bg-lc-layer-2/80 active:scale-95 border border-transparent hover:border-green-500/30"
+            }`}
+          disabled={isRunning}
+          onClick={onRunCode}
+        >
           {isRunning ? (
             <>
-              <Loader2Icon className="size-4 animate-spin" />
-              Running...
+              <Loader2Icon className="size-3 animate-spin" />
+              Running
             </>
           ) : (
             <>
-              <PlayIcon className="size-4" />
-              Run Code
+              <PlayIcon className="size-3 fill-current" />
+              Run
             </>
           )}
         </button>
@@ -54,15 +66,18 @@ function CodeEditorPanel({
           onChange={onCodeChange}
           theme="vs-dark"
           options={{
-            fontSize: 16,
+            fontSize: 14,
             lineNumbers: "on",
             scrollBeyondLastLine: false,
             automaticLayout: true,
+            padding: { top: 10 },
             minimap: { enabled: false },
+            backgroundColor: "#1a1a1a",
           }}
         />
       </div>
     </div>
+
   );
 }
 export default CodeEditorPanel;

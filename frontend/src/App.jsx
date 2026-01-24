@@ -11,6 +11,7 @@ import Problem from "./pages/problem";
 import Dashboard from "./pages/dashboard";
 import Session from "./pages/session";
 import About from "./pages/about";
+import Navbar from "./components/Navbar";
 
 function App() {
   const { isSignedIn, isLoaded } = useUser();
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <>
+    <Navbar />
       <Routes>
         <Route
           path="/"

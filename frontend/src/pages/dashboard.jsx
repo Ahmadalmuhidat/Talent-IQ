@@ -6,7 +6,6 @@ import {
   useCreateSession,
   useRecentSessions
 } from "../hooks/useSessions";
-import Navbar from "../components/Navbar";
 import WelcomeSection from "../components/WelcomeSection";
 import StatsCards from "../components/StatsCards";
 import ActiveSessions from "../components/ActiveSessions";
@@ -55,8 +54,7 @@ function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen bg-base-300">
-        <Navbar />
+      <div className="min-h-screen bg-lc-bg text-lc-text-primary">
         <WelcomeSection onCreateSession={() => setShowCreateModal(true)} />
 
         {/* Grid layout */}

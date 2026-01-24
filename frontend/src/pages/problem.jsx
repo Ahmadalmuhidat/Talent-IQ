@@ -13,7 +13,6 @@ import {
   PanelGroup,
   PanelResizeHandle
 } from "react-resizable-panels";
-import Navbar from "../components/Navbar";
 import ProblemDescription from "../components/ProblemDescription";
 import OutputPanel from "../components/OutputPanel";
 import CodeEditorPanel from "../components/CodeEditorPanel";
@@ -39,7 +38,7 @@ function Problem() {
     setOutput(null);
   };
 
-  const handleProblemChange = (newProblemId) => navigate(`/problem/${newProblemId}`);
+  const handleProblemChange = (newProblemId) => navigate(`/problems/${newProblemId}`);
 
   const triggerConfetti = () => {
     confetti({
@@ -109,8 +108,6 @@ function Problem() {
 
   return (
     <div className="h-screen bg-base-100 flex flex-col">
-      <Navbar />
-
       <div className="flex-1">
         <PanelGroup direction="horizontal">
           {/* left panel- problem desc */}

@@ -1,2 +1,111 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  --color-brand-orange: #ffa116;
+  --color-easy: #00b8a3;
+  --color-medium: #ffc01e;
+  --color-hard: #ef4743;
+
+  --color-lc-bg: #1a1a1a;
+  --color-lc-layer-1: #282828;
+  --color-lc-layer-2: #333333;
+  --color-lc-border: #3e3e3e;
+  --color-lc-text-primary: #eff1f6;
+  --color-lc-text-secondary: #9ea1a7;
+}
+
+:root {
+  background-color: var(--color-lc-bg);
+  color: var(--color-lc-text-primary);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-lc-bg);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-lc-border);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-lc-text-secondary);
+}
+
+/* Stream Chat Overrides */
+.str-chat {
+  --str-chat__primary-color: var(--color-brand-orange);
+  --str-chat__active-primary-color: var(--color-brand-orange);
+  --str-chat__surface-canvas: var(--color-lc-layer-1);
+  --str-chat__surface-low: var(--color-lc-layer-2);
+  --str-chat__border-radius: 12px;
+  --str-chat__body-text-color: var(--color-lc-text-primary);
+  --str-chat__secondary-text-color: var(--color-lc-text-secondary);
+  --str-chat__border-color: var(--color-lc-border);
+}
+
+.str-chat__theme-dark {
+  --str-chat__background-color: transparent !important;
+}
+
+.str-chat__message-list {
+  background-color: var(--color-lc-layer-1) !important;
+}
+
+.str-chat__message-input {
+  background-color: var(--color-lc-layer-1) !important;
+  border-top: 1px solid var(--color-lc-border) !important;
+  padding: 16px !important;
+}
+
+.str-chat__textarea textarea {
+  background-color: var(--color-lc-layer-2) !important;
+  border: 1px solid var(--color-lc-border) !important;
+  color: var(--color-lc-text-primary) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  font-size: 14px !important;
+}
+
+.str-chat__textarea textarea:focus {
+  border-color: var(--color-brand-orange) !important;
+  outline: none !important;
+}
+
+/* Ensure no weird backgrounds on text nodes */
+.str-chat__message-input-content * {
+  background-color: transparent !important;
+}
+
+.str-chat__send-button svg path {
+  fill: var(--color-brand-orange) !important;
+}
+
+.str-chat__message-bubble {
+  background-color: var(--color-lc-layer-2) !important;
+  border: 1px solid var(--color-lc-border) !important;
+}
+
+.str-chat__message--me .str-chat__message-bubble {
+  background-color: var(--color-brand-orange) !important;
+  border: none !important;
+}
+
+.str-chat__message--me .str-chat__message-bubble * {
+  color: white !important;
+}
+
+.str-chat__avatar-inner {
+  border: 2px solid var(--color-brand-orange) !important;
+}
