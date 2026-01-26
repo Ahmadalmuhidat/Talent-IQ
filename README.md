@@ -1,6 +1,4 @@
-![Talent-IQ App](/assets/screenshot-for-readme.png)
-
-# 💻 Talent-IQ Platform
+# Talent-IQ Platform
 
 A real-time collaborative coding interview platform built with modern web technologies. Conduct technical interviews with video calls, collaborative code editing, and secure code execution.
 
@@ -11,7 +9,7 @@ A real-time collaborative coding interview platform built with modern web techno
 
 ---
 
-## 🎯 What is This?
+## What is This?
 
 Interview Platform is a comprehensive solution for conducting technical interviews remotely. It provides:
 
@@ -22,27 +20,27 @@ Interview Platform is a comprehensive solution for conducting technical intervie
 
 ---
 
-## ✨ Features
+## Features
 
-### 💻 Code Editor & Execution
+### Code Editor & Execution
 - VSCode-powered code editor with syntax highlighting
 - Multi-language support (JavaScript, Python, Java, and more)
 - Secure code execution in isolated environments
 - Auto-grading with test cases and instant feedback
 
-### 🎥 Video Communication
+### Video Communication
 - 1-on-1 video interview rooms
 - Screen sharing for collaborative problem-solving
 - Camera and microphone controls
 - Session recording capabilities
 
-### 💬 Real-time Collaboration
+### Real-time Collaboration
 - Live chat messaging during interviews
 - Real-time code synchronization
 - Background job processing for async tasks
 - Instant notifications and feedback
 
-### 📊 Interview Management
+### Interview Management
 - Dashboard with live statistics
 - Session history and recent activity
 - Practice problems for solo coding
@@ -50,7 +48,7 @@ Interview Platform is a comprehensive solution for conducting technical intervie
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -80,7 +78,7 @@ Interview Platform is a comprehensive solution for conducting technical intervie
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have:
 
@@ -100,7 +98,7 @@ Before you begin, ensure you have:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -152,7 +150,7 @@ npm run dev
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 ### Backend (`.env`)
 
@@ -195,36 +193,7 @@ VITE_STREAM_API_KEY=your_stream_api_key
 
 ---
 
-## 📚 API Documentation
-
-### Base URL
-
-```
-http://localhost:3000/api
-```
-
----
-
-## 🎨 Usage Guide
-
-### Starting an Interview
-
-1. Sign in using Clerk authentication
-2. Click "New Session" to create an interview room
-3. Share the room link with the candidate
-4. Use video, chat, and code editor collaboratively
-
-### Practice Mode
-
-1. Navigate to "Practice Problems"
-2. Select a problem from the list
-3. Write your solution in the code editor
-4. Run code to test against test cases
-5. View feedback and results
-
----
-
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our contributing guidelines:
 
@@ -243,7 +212,7 @@ We welcome contributions! Please see our contributing guidelines:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -256,11 +225,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Inngest](https://inngest.com) for background jobs
 - [Piston](https://github.com/engineer-man/piston) for code execution
 - [Sevalla](https://sevalla.com) for free-tier deployment
-
----
-
-<div align="center">
-
-**Built with ❤️ for better technical interviews**
-
-</div>
