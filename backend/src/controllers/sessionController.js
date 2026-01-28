@@ -24,14 +24,14 @@ export async function createSession(req, res) {
     }
 
     const callId = `session_${Date.now()}_${Math.random().toString(36).substring(7)}`;
-
     const session = await sessionModel.create({
       problem: problem,
       difficulty: difficulty,
       host: userId,
-      callId: callId,
+      callId: callId
     });
 
+    // Create a video call for the session
     await streamClient.video.call("default", callId).getOrCreate({
       data: {
         created_by_id: clerkId,
@@ -43,11 +43,16 @@ export async function createSession(req, res) {
       },
     });
 
-    const channel = chatClient.channel("messaging", callId, {
-      name: `${problem} Session`,
-      created_by_id: clerkId,
-      members: [clerkId],
-    });
+    // Create a chat channel for the session
+    const channel = chatClient.channel(
+      "messaging",
+      callId,
+      {
+        name: `${problem} Session`,
+        created_by_id: clerkId,
+        members: [clerkId]
+      }
+    );
 
     await channel.create();
 

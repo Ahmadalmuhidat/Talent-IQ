@@ -19,7 +19,7 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cors({
   origin: ENV.CLIENT_URL,
-  credentials: true
+  credentials: true // Allow cookies and auth headers
 }));
 app.use(clerkMiddleware());
 app.use('/api/inngest', serve({
@@ -43,7 +43,10 @@ if (ENV.NODE_ENV === 'production') {
 
 const startServer = async () => {
   try {
+    // Connect to MongoDB
     await connectToDatabase();
+
+    // Start the server
     app.listen(ENV.PORT, () => {
       console.log(`Server is running on port ${ENV.PORT}`);
     });
